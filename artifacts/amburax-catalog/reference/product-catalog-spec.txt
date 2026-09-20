@@ -1,0 +1,506 @@
+AMBURAX — F4.1 PRODUCT CATALOG
+STITCH → REPLIT FRONTEND PROTOTYPE
+
+I have uploaded the Stitch-generated AMBURAX Catalog ZIP.
+
+IMPORTANT:
+Build ONLY the frontend.
+
+DO NOT build a backend.
+DO NOT create a database.
+DO NOT create authentication.
+DO NOT create authorization.
+DO NOT create APIs.
+DO NOT use Supabase.
+DO NOT use Firebase.
+DO NOT create ERPNext integration.
+DO NOT replace the AMBURAX architecture.
+
+The resulting project is a HIGH-FIDELITY FRONTEND PROTOTYPE that will later be integrated into the real AMBURAX Next.js application by Antigravity.
+
+==================================================
+PRODUCT
+==================================================
+
+Product:
+AMBURAX
+
+Screen:
+F4.1 — Product Catalog
+
+Production route:
+/products
+
+The frontend should reproduce the uploaded Stitch design as faithfully as practical.
+
+==================================================
+1. INSPECT THE UPLOADED STITCH ZIP
+==================================================
+
+Before generating the frontend, inspect ALL uploaded files.
+
+Look for:
+
+- DESIGN.md
+- code.html
+- React/TSX files
+- CSS
+- Tailwind configuration
+- ui/
+- catalog/
+- assets
+- icons
+- images
+- typography
+- spacing
+- colors
+- borders
+- radii
+- shadows
+- responsive rules
+- interaction states
+
+Treat the Stitch package as the PRIMARY VISUAL SOURCE OF TRUTH.
+
+Do not redesign it according to your own preferences.
+
+==================================================
+2. VISUAL OBJECTIVE
+==================================================
+
+The result must feel like a:
+
+PREMIUM ENTERPRISE BUSINESS OPERATING PLATFORM
+
+NOT:
+
+- generic admin dashboard
+- basic CRUD application
+- landing page
+- simple ecommerce storefront
+
+Prioritize:
+
+- high information density
+- professional workspace
+- compact controls
+- strong hierarchy
+- polished product cards
+- rich filtering
+- persistent product context
+- professional tables
+- powerful inspector
+- responsive enterprise UX
+
+==================================================
+3. PRODUCT CATALOG
+==================================================
+
+Reproduce the Stitch Catalog experience including the supported visual structures:
+
+LEFT FILTER PANEL
+
+- Search
+- Category
+- Brand
+- Price
+- Size
+- Color
+- Stock Status
+- Filter groups/counts where shown
+
+MAIN TOOLBAR
+
+- Result count
+- Sorting
+- Pagination
+- Grid/List toggle
+- Contextual actions where visually appropriate
+
+PRODUCT GRID
+
+- Product image
+- Product name
+- SKU
+- Brand
+- Price
+- MRP
+- Discount
+- Stock
+- Color
+- Size
+- Status
+- Selected/hover states
+
+RIGHT PRODUCT INSPECTOR
+
+- Product image
+- Product identity
+- Status
+- SKU
+- Pricing
+- Variants
+- Stock
+- Details
+- Tabs
+- Quick-action area
+
+Use the exact Stitch structure and proportions wherever possible.
+
+==================================================
+4. APPLICATION SHELL
+==================================================
+
+Reproduce the visual shell shown by Stitch where it exists:
+
+- Sidebar
+- Brand
+- Store switcher
+- Navigation
+- Header
+- Search
+- User/profile area
+- Workspace controls
+
+BUT:
+
+This is only a prototype.
+
+Do not create real authentication or application authorization.
+
+Use realistic placeholder UI data.
+
+Keep shell components modular because Antigravity will later integrate them with the real AMBURAX AppShell.
+
+==================================================
+5. TEMPORARY DATA
+==================================================
+
+Because this is frontend-only, temporary mock data is allowed.
+
+However:
+
+KEEP ALL MOCK DATA IN A SINGLE CLEAN DATA LAYER.
+
+Do NOT scatter hardcoded product information across components.
+
+Create something like:
+
+src/data/
+  products.ts
+  catalog.ts
+
+or an equivalent clean structure.
+
+The eventual production data contract will be:
+
+Product
+ProductVariant
+Pricing
+StockLevel
+StockMovement
+Store
+Tenant
+RBAC
+
+The mock layer must be easy to replace with AMBURAX APIs later.
+
+==================================================
+6. UNSUPPORTED FEATURES
+==================================================
+
+The real AMBURAX backend currently does NOT support:
+
+- Margin Delta
+- cost-based margin calculation
+- Product Tags engine
+- multi-image galleries
+- Import
+- Export
+- Bulk Update
+- Favorites persistence
+- Add to Offer
+- View in ERPNext
+
+Therefore:
+
+Do not build these as real functionality.
+
+For visual fidelity, a static visual element may be represented where required by the Stitch composition, but do NOT create fake business behavior.
+
+Example:
+
+A visual "favorite" icon may exist for visual composition, but it should not pretend to persist data.
+
+Prefer omitting unsupported functionality when the visual element is not essential.
+
+==================================================
+7. PRODUCT IMAGES
+==================================================
+
+Match the Stitch image presentation closely.
+
+Use:
+
+- appropriate aspect ratio
+- object-fit
+- clean image containers
+- loading/fallback handling
+
+Temporary local/mock images are allowed for this prototype.
+
+Do not embed production business data.
+
+==================================================
+8. DESIGN SYSTEM
+==================================================
+
+Use the Stitch design system from the uploaded package.
+
+Preserve:
+
+- typography
+- Slate palette
+- Brand palette
+- border treatment
+- micro-radius system
+- button geometry
+- card geometry
+- table density
+- tabular number treatment
+- shadows/elevation
+- control heights
+- spacing scale
+
+Do not replace the Stitch design with another design system.
+
+==================================================
+9. COMPONENT ARCHITECTURE
+==================================================
+
+Build reusable components such as:
+
+- AppShell
+- Sidebar
+- Header
+- FilterPanel
+- CatalogToolbar
+- ProductCard
+- ProductGrid
+- ProductTable
+- ProductDetailPanel
+- ProductTabs
+- StatusBadge
+- Pagination
+- EmptyState
+- LoadingState
+
+Keep components modular.
+
+Avoid one giant component.
+
+==================================================
+10. INTERACTIONS
+==================================================
+
+The prototype must actually behave like the design.
+
+Implement frontend interactions for:
+
+- Search
+- Filter selection
+- Sorting
+- Pagination
+- Grid/List toggle
+- Product selection
+- Product detail inspector
+- Tabs
+- Responsive filter drawer
+- Responsive detail panel
+- Hover states
+- Selected states
+- Open/close interactions
+
+These are frontend interactions only.
+
+No backend persistence is required.
+
+==================================================
+11. URL STATE
+==================================================
+
+Where practical, support URL state for:
+
+- search
+- filters
+- sort
+- page
+- selected product
+- view mode
+
+This will make later AMBURAX integration easier.
+
+==================================================
+12. RESPONSIVE
+==================================================
+
+Implement and verify:
+
+1536px
+1280px
+1024px
+768px
+390px
+
+Expected behavior:
+
+Desktop:
+full enterprise workspace
+
+Laptop:
+adapt inspector appropriately
+
+Tablet:
+reduce columns and preserve usability
+
+Mobile:
+single-column catalog
+filter drawer
+mobile product detail experience
+
+Do NOT simply shrink the desktop layout.
+
+==================================================
+13. ACCESSIBILITY
+==================================================
+
+Implement:
+
+- semantic headings
+- accessible buttons
+- keyboard navigation
+- visible focus
+- accessible form controls
+- accessible tabs
+- accessible drawer/panel
+- alt text
+- status information not dependent only on color
+
+==================================================
+14. VISUAL QA
+==================================================
+
+Compare the generated result directly against the uploaded Stitch Catalog.
+
+Check:
+
+- dimensions
+- spacing
+- typography
+- card density
+- filter width
+- image ratio
+- toolbar placement
+- table density
+- inspector width
+- borders
+- radii
+- shadows
+- colors
+- selected states
+- mobile transformation
+
+Iterate until the frontend is as visually faithful as practical.
+
+==================================================
+15. IMPORTANT ARCHITECTURAL RESTRICTION
+==================================================
+
+DO NOT BUILD:
+
+- Node backend
+- Express backend
+- database
+- Supabase
+- Firebase
+- authentication
+- RBAC
+- tenant backend
+- ERPNext
+- server APIs
+- payment systems
+- inventory persistence
+
+This is intentionally FRONTEND ONLY.
+
+==================================================
+16. OUTPUT
+==================================================
+
+Deliver a polished frontend project that represents:
+
+F4.1 — Product Catalog
+
+It must be immediately previewable in Replit.
+
+The code should be clean enough for another engineer to transplant the visual implementation into:
+
+D:\G-POS
+
+later.
+
+==================================================
+FINAL REPORT
+==================================================
+
+Return:
+
+F4.1 FRONTEND PROTOTYPE STATUS
+
+Visual fidelity:
+...
+
+Responsive:
+...
+
+Interactions:
+...
+
+Components created:
+...
+
+Design system:
+...
+
+Mock data layer:
+...
+
+Unsupported functionality:
+...
+
+Backend:
+NOT IMPLEMENTED BY DESIGN
+
+Authentication:
+NOT IMPLEMENTED BY DESIGN
+
+Database:
+NOT IMPLEMENTED BY DESIGN
+
+API:
+NOT IMPLEMENTED BY DESIGN
+
+Build:
+...
+
+Preview:
+...
+
+Files:
+...
+
+IMPORTANT:
+
+Do not claim production readiness.
+
+This is a high-fidelity frontend prototype intended for later AMBURAX integration.

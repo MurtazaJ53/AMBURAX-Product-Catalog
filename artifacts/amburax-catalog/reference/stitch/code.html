@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Atelier Retail Garment POS - Product Catalog</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            },
+            sidebar: '#ffffff',
+            slateBg: '#f8fafc',
+            borderSubtle: '#e2e8f0',
+          },
+          fontSize: {
+            '2xs': '0.6875rem',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-scrollbars">
+    /* Custom subtle scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+<style data-purpose="layout-utilities">
+    /* Utility for card hover elevation */
+    .card-hover {
+      transition: all 0.15s ease-in-out;
+    }
+    .card-hover:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    }
+  </style>
+</head>
+<body class="bg-slateBg text-slate-800 font-sans antialiased overflow-hidden text-xs selection:bg-brand-100 selection:text-brand-700">
+<div class="flex h-screen w-screen overflow-hidden">
+<!-- BEGIN: LeftSidebar -->
+<aside class="w-60 bg-sidebar border-r border-borderSubtle flex flex-col flex-shrink-0 z-20 select-none justify-between h-full">
+<!-- Top Branding and Nav Menu -->
+<div class="flex flex-col flex-1 overflow-y-auto">
+<!-- Brand Logo Header -->
+<div class="p-4 flex items-center gap-3 border-b border-borderSubtle">
+<div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white shadow-sm flex-shrink-0">
+<!-- Retail Shirt Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h1 class="text-xs font-bold tracking-tight text-slate-900 uppercase">ATELIER RETAIL</h1>
+<p class="text-2xs text-slate-500 font-medium">Garment POS • v2.4</p>
+</div>
+</div>
+<!-- Active Outlet Pill Box -->
+<div class="px-3 pt-3">
+<div class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70 flex items-center justify-between">
+<div>
+<div class="text-2xs uppercase tracking-wider font-semibold text-slate-400">ACTIVE OUTLET</div>
+<div class="text-xs font-semibold text-slate-800 flex items-center gap-1.5 mt-0.5">
+<span>Indiranagar Store</span>
+<span class="text-slate-400 font-normal">#01</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-2xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              Live
+            </span>
+</div>
+</div>
+<!-- Main Navigation Links -->
+<nav aria-label="Sidebar Navigation" class="px-3 py-3 space-y-0.5 flex-1">
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>POS Checkout</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Sales &amp; Transactions</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Stock Transfer</span>
+</a>
+<!-- Active Menu Item: Products / Catalog -->
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md bg-blue-50 text-brand-600 font-semibold border border-blue-100 shadow-sm" href="#">
+<svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Products / Catalog</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Customers (CRM)</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Customer Due (Khata)</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Suppliers</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V4a2 2 0 10-2 2h2zm0 13l-4-4m4 4l4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Offers &amp; Loyalty</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Reports &amp; Analytics</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>AI Center</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors font-medium" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Store &amp; Settings</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Help Box & Sync Status -->
+<div class="p-3 border-t border-borderSubtle bg-white">
+<div class="bg-blue-50/80 rounded-lg p-3 border border-blue-100 relative">
+<div class="flex items-start justify-between">
+<div>
+<h4 class="text-xs font-semibold text-slate-800">Need Help?</h4>
+<p class="text-2xs text-slate-500 mt-1 leading-relaxed">Watch tutorial or contact support for catalog management.</p>
+</div>
+<svg class="w-4 h-4 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="mt-2.5 flex items-center gap-2">
+<button class="bg-brand-600 hover:bg-brand-700 text-white font-medium text-2xs px-2.5 py-1 rounded transition-colors shadow-sm">
+              View Guide
+            </button>
+<button class="p-1 text-slate-500 hover:text-slate-700">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3 px-1 text-2xs text-slate-500">
+<div class="flex items-center gap-1.5 font-medium">
+<svg class="w-3.5 h-3.5 text-brand-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Cloud Sync</span>
+</div>
+<span class="text-slate-400">Last sync 2 min ago</span>
+</div>
+</div>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- BEGIN: MainContentContainer -->
+<div class="flex-1 flex flex-col min-w-0 overflow-hidden bg-slateBg">
+<!-- BEGIN: TopNavbar -->
+<header class="h-14 bg-white border-b border-borderSubtle flex items-center justify-between px-4 flex-shrink-0 z-10 gap-4">
+<!-- Left: Outlet Switcher -->
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors text-slate-700">
+<svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<div class="text-left leading-tight">
+<div class="font-semibold text-xs text-slate-900">Store #01</div>
+<div class="text-2xs text-slate-500 font-normal">Indiranagar</div>
+</div>
+<svg class="w-3.5 h-3.5 text-slate-400 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<!-- Center: Universal Search -->
+<div class="flex-1 max-w-xl">
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+<input class="w-full pl-9 pr-12 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-brand-500 focus:bg-white placeholder-slate-400 text-slate-700 transition-all" placeholder="Search products, SKU, barcode, style, brand..." type="text"/>
+<span class="absolute inset-y-0 right-0 flex items-center pr-2.5 pointer-events-none">
+<kbd class="px-1.5 py-0.5 text-2xs font-medium text-slate-400 bg-white border border-slate-200 rounded shadow-2xs">⌘K</kbd>
+</span>
+</div>
+</div>
+<!-- Right: Status Indicators, Action & Profile -->
+<div class="flex items-center gap-3">
+<!-- Online status -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50/70 border border-emerald-100 rounded-full text-emerald-700 font-medium text-2xs">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>Store Online</span>
+</div>
+<!-- Active Shift -->
+<div class="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-md text-slate-600 font-medium text-2xs">
+            Shift #02 <span class="text-slate-400 font-normal ml-0.5">Live</span>
+</div>
+<!-- New Sale Shortcut Button -->
+<button class="flex items-center gap-1.5 bg-brand-600 hover:bg-brand-700 text-white px-3 py-1.5 rounded-lg font-semibold text-xs shadow-xs transition-colors">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>New Sale (F2)</span>
+</button>
+<!-- Notification Bell -->
+<button aria-label="Notifications" class="relative p-1.5 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-md transition-colors">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="absolute 0 top-0.5 right-0.5 w-4 h-4 bg-red-500 text-white rounded-full text-2xs flex items-center justify-center font-bold">3</span>
+</button>
+<div class="h-6 w-px bg-slate-200"></div>
+<!-- User Pill -->
+<div class="flex items-center gap-2 pl-1 cursor-pointer group">
+<img alt="Ramesh Sharma" class="w-8 h-8 rounded-full ring-1 ring-slate-200 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBty51c9klj_2TItU6E8FnLqgk-pSUi86xOoHelCYwZYNTOYFYw1-2vavB28gPBTzFplEdE0jsdfnkHVDU70xcAkW6Pzvdnmnm2yh4MKCO_Ue2k0Drdm5hy8_98PJTnSz0Jv2hoTo2nDZFiBIbVQaqLaqHVePUSbJAtJPNqBQYYSBtqCtj84bRBV1_DaXkY9c3WdWogdAuOtdHCuRWNkfoJGHDKSKbCSiRBeex1NNeK1lFOnw5evDws"/>
+<div class="text-left hidden sm:block">
+<div class="text-xs font-semibold text-slate-800 leading-tight">Ramesh Sharma</div>
+<div class="text-2xs text-slate-400 font-normal leading-tight">Store Manager</div>
+</div>
+<svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+</div>
+</header>
+<!-- END: TopNavbar -->
+<!-- BEGIN: SubHeader (Breadcrumbs & Catalog Actions) -->
+<div class="px-5 py-3.5 bg-white border-b border-borderSubtle flex items-center justify-between flex-shrink-0">
+<div>
+<!-- Breadcrumb -->
+<div class="text-2xs text-slate-500 font-medium flex items-center gap-1 mb-0.5">
+<span>Products</span>
+<span class="text-slate-400">/</span>
+<span class="text-slate-800 font-semibold">Catalog</span>
+</div>
+<h2 class="text-lg font-bold text-slate-900 tracking-tight leading-tight">Product Catalog</h2>
+<p class="text-2xs text-slate-500 mt-0.5">Manage your products, styles, variants, prices and stock across stores.</p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-2xs">
+<svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Import</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-2xs">
+<svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Export</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-2xs">
+<svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Bulk Update</span>
+</button>
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Add Product</span>
+</button>
+</div>
+</div>
+<!-- END: SubHeader -->
+<!-- BEGIN: ThreeColumnWorkspace -->
+<div class="flex-1 flex overflow-hidden">
+<!-- WORKSPACE COL 1: FILTERS PANEL (Left) -->
+<aside class="w-56 bg-white border-r border-borderSubtle overflow-y-auto flex-shrink-0 p-4 space-y-4 select-none">
+<div class="flex items-center justify-between pb-2 border-b border-slate-100">
+<span class="text-xs font-bold text-slate-900 tracking-tight">Filters</span>
+<button class="text-2xs font-semibold text-brand-600 hover:underline">Clear All</button>
+</div>
+<!-- Search within results -->
+<div class="relative">
+<input class="w-full pl-8 pr-2.5 py-1 text-2xs bg-slate-50 border border-slate-200 rounded-md focus:bg-white focus:outline-none focus:ring-1 focus:ring-brand-500 text-slate-700" placeholder="Search within results..." type="text"/>
+<svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<!-- Category Accordion -->
+<div class="space-y-2">
+<div class="flex items-center justify-between font-semibold text-xs text-slate-800 cursor-pointer">
+<span>Category</span>
+<svg class="w-3 h-3 text-slate-400 transform rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="space-y-1.5 pt-1 text-xs">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-700 font-medium">Men's Wear <span class="text-slate-400 text-2xs">(428)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Women's Wear <span class="text-slate-400 text-2xs">(316)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Kids Wear <span class="text-slate-400 text-2xs">(192)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Ethnic Wear <span class="text-slate-400 text-2xs">(148)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Footwear <span class="text-slate-400 text-2xs">(86)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Accessories <span class="text-slate-400 text-2xs">(124)</span></span>
+</label>
+</div>
+</div>
+<!-- Brand Accordion -->
+<div class="space-y-2 pt-2 border-t border-slate-100">
+<div class="flex items-center justify-between font-semibold text-xs text-slate-800 cursor-pointer">
+<span>Brand</span>
+<svg class="w-3 h-3 text-slate-400 transform rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="space-y-1.5 pt-1 text-xs">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Allen Solly <span class="text-slate-400 text-2xs">(56)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Lee <span class="text-slate-400 text-2xs">(42)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Levi's <span class="text-slate-400 text-2xs">(38)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">U.S. Polo <span class="text-slate-400 text-2xs">(44)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">H&amp;M <span class="text-slate-400 text-2xs">(62)</span></span>
+</label>
+<button class="text-brand-600 text-2xs font-semibold hover:underline pt-0.5 block">+ Show More</button>
+</div>
+</div>
+<!-- Price Range Filter -->
+<div class="space-y-2 pt-2 border-t border-slate-100">
+<div class="flex items-center justify-between font-semibold text-xs text-slate-800">
+<span>Price Range</span>
+<svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<div class="px-2 py-1 bg-slate-50 border border-slate-200 rounded text-2xs text-slate-700 w-20 text-center font-medium">₹ 0</div>
+<span class="text-slate-400 text-2xs">to</span>
+<div class="px-2 py-1 bg-slate-50 border border-slate-200 rounded text-2xs text-slate-700 w-24 text-center font-medium">₹ 10,000</div>
+</div>
+</div>
+<!-- Size Accordion -->
+<div class="space-y-2 pt-2 border-t border-slate-100">
+<div class="flex items-center justify-between font-semibold text-xs text-slate-800">
+<span>Size</span>
+<svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="grid grid-cols-3 gap-1.5 pt-1">
+<button class="py-1 border border-slate-200 hover:border-slate-300 rounded text-2xs font-medium text-slate-700 text-center bg-white hover:bg-slate-50">XS</button>
+<button class="py-1 border border-slate-200 hover:border-slate-300 rounded text-2xs font-medium text-slate-700 text-center bg-white hover:bg-slate-50">S</button>
+<button class="py-1 border border-slate-200 hover:border-slate-300 rounded text-2xs font-medium text-slate-700 text-center bg-white hover:bg-slate-50">M</button>
+<button class="py-1 border border-slate-200 hover:border-slate-300 rounded text-2xs font-medium text-slate-700 text-center bg-white hover:bg-slate-50">L</button>
+<button class="py-1 border border-slate-200 hover:border-slate-300 rounded text-2xs font-medium text-slate-700 text-center bg-white hover:bg-slate-50">XL</button>
+<button class="py-1 border border-slate-200 hover:border-slate-300 rounded text-2xs font-medium text-slate-700 text-center bg-white hover:bg-slate-50">XXL</button>
+</div>
+</div>
+<!-- Color Swatches -->
+<div class="space-y-2 pt-2 border-t border-slate-100">
+<div class="flex items-center justify-between font-semibold text-xs text-slate-800">
+<span>Color</span>
+<svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="flex items-center gap-1.5 flex-wrap pt-1">
+<button class="w-5 h-5 rounded-full bg-slate-900 ring-1 ring-slate-300 hover:scale-110 transition-transform" title="Black"></button>
+<button class="w-5 h-5 rounded-full bg-blue-900 ring-1 ring-slate-300 hover:scale-110 transition-transform" title="Navy"></button>
+<button class="w-5 h-5 rounded-full bg-blue-600 ring-1 ring-slate-300 hover:scale-110 transition-transform" title="Blue"></button>
+<button class="w-5 h-5 rounded-full bg-rose-600 ring-1 ring-slate-300 hover:scale-110 transition-transform" title="Red"></button>
+<button class="w-5 h-5 rounded-full bg-emerald-700 ring-1 ring-slate-300 hover:scale-110 transition-transform" title="Green"></button>
+<button class="w-5 h-5 rounded-full bg-amber-100 ring-1 ring-slate-300 hover:scale-110 transition-transform" title="Beige"></button>
+<button class="w-5 h-5 rounded-full bg-white ring-1 ring-slate-300 hover:scale-110 transition-transform" title="White"></button>
+<button class="text-2xs font-semibold text-brand-600 hover:underline pl-1">+ More</button>
+</div>
+</div>
+<!-- Stock Status Accordion -->
+<div class="space-y-2 pt-2 border-t border-slate-100">
+<div class="flex items-center justify-between font-semibold text-xs text-slate-800">
+<span>Stock Status</span>
+<svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="space-y-1.5 pt-1 text-xs">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-700 font-medium">In Stock <span class="text-slate-400 text-2xs">(812)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Low Stock <span class="text-slate-400 text-2xs">(48)</span></span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Out of Stock <span class="text-slate-400 text-2xs">(12)</span></span>
+</label>
+</div>
+</div>
+<!-- Tags -->
+<div class="space-y-2 pt-2 border-t border-slate-100">
+<div class="flex items-center justify-between font-semibold text-xs text-slate-800">
+<span>Tags</span>
+<svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="space-y-1.5 pt-1 text-xs">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">New Arrival</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">Best Seller</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-slate-300 text-brand-600 focus:ring-brand-500 h-3.5 w-3.5" type="checkbox"/>
+<span class="text-slate-600">On Offer</span>
+</label>
+</div>
+</div>
+</aside>
+<!-- WORKSPACE COL 2: MAIN CATALOG PRODUCT GRID (Middle) -->
+<main class="flex-1 overflow-y-auto p-4 space-y-3 flex flex-col">
+<!-- Catalog Toolbar -->
+<div class="flex items-center justify-between pb-1 flex-shrink-0">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-900">1,120 Products</span>
+</div>
+<div class="flex items-center gap-3">
+<!-- Sort dropdown -->
+<div class="flex items-center gap-1.5 text-2xs text-slate-500">
+<span>Sort by</span>
+<select class="py-1 pl-2 pr-7 text-xs border border-slate-200 rounded-md bg-white text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-brand-500">
+<option>Latest</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Popularity</option>
+</select>
+</div>
+<!-- List / Grid Toggle -->
+<div class="flex items-center border border-slate-200 rounded-md bg-white p-0.5">
+<button class="p-1 text-slate-400 hover:text-slate-600 rounded">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="p-1 text-brand-600 bg-slate-100 rounded">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<!-- Pagination Header Controls -->
+<div class="flex items-center gap-1">
+<button class="w-6 h-6 rounded bg-brand-600 text-white font-semibold text-2xs flex items-center justify-center shadow-xs">1</button>
+<button class="w-6 h-6 rounded border border-slate-200 hover:bg-slate-50 text-slate-600 text-2xs flex items-center justify-center">2</button>
+<button class="w-6 h-6 rounded border border-slate-200 hover:bg-slate-50 text-slate-600 text-2xs flex items-center justify-center">3</button>
+<span class="text-slate-400 text-2xs px-0.5">...</span>
+<button class="w-6 h-6 rounded border border-slate-200 hover:bg-slate-50 text-slate-600 text-2xs flex items-center justify-center">56</button>
+<button class="w-6 h-6 rounded border border-slate-200 hover:bg-slate-50 text-slate-600 flex items-center justify-center">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card Grid: 4 columns -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
+<!-- Card 1: Men's Casual Shirt (Active Highlighted) -->
+<div class="bg-white rounded-lg border-2 border-brand-500/60 p-2.5 flex flex-col justify-between relative shadow-xs">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded text-2xs font-semibold bg-brand-50 text-brand-600 border border-brand-200">New</span>
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Men's Casual Shirt" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAErco-SVxnzokWHk8q0ry9okNA51lEMPyHrOChnRPBc2Pe6U3Y4TNfpHaZBPdT9_ICMUN0lq4UsDGuGqKhh4rzymtQOlzvIaQSRsh_xrQ0hqjNPBaRc1IS5O9Oy_VvCRYba1N83JsBvVgBdvLIuu15NqDNmdmlUpptu4cRN4Ucm4EVfIrjMssqTO8oRzjLrOsuZ72-uHKqRb9L3lFNBK76xQ540a9cnZHmQFMbVuhELDPf9wTkAua-"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Men's Casual Shirt</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>SH-001</span>
+<span>Allen Solly</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹799</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-emerald-600">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>In Stock (62)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-slate-100">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-900"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+</div>
+<div class="flex items-center gap-1 text-2xs text-slate-500">
+<span class="px-1 bg-slate-100 rounded">S</span>
+<span class="px-1 bg-slate-100 rounded">M</span>
+<span class="px-1 bg-slate-100 rounded">XL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Men's Printed Shirt -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Men's Printed Shirt" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyY7t8lQDjLMW-YbIfxXURQYVS_fFE5TePs6qmYNqtwxuf3k3TQKlvqvYct9Ww2IkBV5hZH7j4mxQbCdQDkP-uTTKCCou7OJCR8FgWaktPVHsRWxJBn9yvxbJEdNLJGeF_HtI4f_xmR4MCMwqZJ7HZhjYaUbpKGgV5PycKc4bscBJoEaY5zjZ9_KfbqfHSP0z2_BLihm5l_2XR9vRLc8eKXnjkTc9O5DJRIuw6Mv6zhlt2Sf6LXjlW"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Men's Printed Shirt</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>SH-002</span>
+<span>U.S. Polo</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹899</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-emerald-600">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>In Stock (24)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-slate-100">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-blue-800"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
+</div>
+<div class="flex items-center gap-1 text-2xs text-slate-500">
+<span class="px-1 bg-slate-100 rounded">S</span>
+<span class="px-1 bg-slate-100 rounded">M</span>
+<span class="px-1 bg-slate-100 rounded">L</span>
+<span class="px-1 bg-slate-100 rounded">XL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Men's Polo T-Shirt -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Men's Polo T-Shirt" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHSON8zGpO9VDypB0FpvSl1EbMcB7Zx12aQHvl1HjKspg7M69U7AuyHSlwH--a6V83486ku-0Dtas6aeWnki3MLVIqJZ424ZztxaDb-37Ztbyr4iHjHNFuJ8zHYJIIdQbYF9ighghkacWPd5b6haI75vc_L70WmCAi-HJnjrfWVDb9bR7_pqD7_cGUeBi1dtfAILdwnkj5mBGFCpUfCMg5KK9QSPmMGEgPlticmaLBDc29edLXC7id"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Men's Polo T-Shirt</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>TS-001</span>
+<span>Levi's</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹699</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-emerald-600">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>In Stock (48)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-slate-100">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-800"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-amber-700"></span>
+</div>
+<div class="flex items-center gap-1 text-2xs text-slate-500">
+<span class="px-1 bg-slate-100 rounded">S</span>
+<span class="px-1 bg-slate-100 rounded">M</span>
+<span class="px-1 bg-slate-100 rounded">L</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4: Men's Denim Jeans -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Men's Denim Jeans" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoDISwjAP5KsCgpxs3K7nQLDPn0pH7R3p1ZfFby9BXLfvIePBhBpn13q-H4F4Nwld46s-vyyrhjxAGQUf8VlVKO4WOQ-HpbjqchPSakVWD_2UoI_rZCTlZRS-T2bysL6jrZ9Sh9-ja5s3zZZGuROxyqmfABI6-wx1WM-AiD6Lu9y2o0LxLf-JLaLCYABzyo7R_eKBmiD-QOy7vRNEpCd0WmFP08UIDFssWeaI9cAlFEdmioHgMPtH3"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Men's Denim Jeans</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>JN-001</span>
+<span>Levi's</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹1,299</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-emerald-600">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>In Stock (32)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-slate-100">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-blue-950"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-blue-700"></span>
+</div>
+<div class="flex items-center gap-1 text-2xs text-slate-500">
+<span class="px-1 bg-slate-100 rounded">S</span>
+<span class="px-1 bg-slate-100 rounded">M</span>
+<span class="px-1 bg-slate-100 rounded">L</span>
+<span class="px-1 bg-slate-100 rounded">XL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 5: Women's Kurti -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded text-2xs font-semibold bg-brand-50 text-brand-600 border border-brand-200">New</span>
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Women's Kurti" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCncYBl4M4BbyNEd_GMciyetp7dCuuB8E7Y19q8qr1MmOH_BXTsywXYYmsnnhBTOJICxKbJotxPJi2RwkXeWHXRyzesiXnnwpl-Da2bBMON7skSf4lBuiahwDtLI1CkhkTy0RtCQrIXOVDAXh0AUQu-uEjFQfPexqW6fYNx04gyCu1SEWr89kFUqradOe6SLhTn836CCm7LEF_fkyTmP6ILaNsLcIRxSU3zfV838mZ_GqPqMFvOVEey"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Women's Kurti</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>KR-110</span>
+<span>Aurelia</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹1,099</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-emerald-600">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>In Stock (28)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-slate-100">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-pink-700"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-slate-900"></span>
+</div>
+<div class="flex items-center gap-1 text-2xs text-slate-500">
+<span class="px-1 bg-slate-100 rounded">S</span>
+<span class="px-1 bg-slate-100 rounded">M</span>
+<span class="px-1 bg-slate-100 rounded">XL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 6: Women's Top -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded text-2xs font-semibold bg-amber-50 text-amber-600 border border-amber-200">Offer</span>
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Women's Top" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCC03Y5hBC9MWbzC9bsTEykLc_Fq2n9YRcUi4fo1X_wlv9cjSwYyVFIoY7kJGapk2ol_BpAjkH86650_7SzI48fRUzjoDo_fRyt8bPnOlX4IwmOC2HfXgPzbaGqguLUL5cgGjsh6huNs4OATPeXgIdYiUNF5KajIXjtp1TBWKZdTxfYMlwET9NPBaIzpkvxaywYhLLLvJlUZdohUXXbicoy2KWWXqyOGnwoL0N6j8gHvgXGYL_pc7z"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Women's Top</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>TP-220</span>
+<span>H&amp;M</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹799</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-amber-600">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+<span>Low Stock (5)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-slate-100">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-stone-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-blue-900"></span>
+</div>
+<div class="flex items-center gap-1 text-2xs text-slate-500">
+<span class="px-1 bg-slate-100 rounded">XS</span>
+<span class="px-1 bg-slate-100 rounded">S</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 7: Kids T-Shirt -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded text-2xs font-semibold bg-brand-50 text-brand-600 border border-brand-200">New</span>
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Kids T-Shirt" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNZ0m-SCrni5sqbNEX9Qo6n58Fk6G3s_rQD8AB2YY0WuWij577yfkmuQAn5PK3NY16DCiK_k8ICL7t2Tw6pPbKTtSpYJQTuoknl0T8mQAIkDqSuzSv9xWz8sDweJ4kbqog5DLl1XvTHKX16Z8wtl72riPlm8VCkobQsmIil46OXGxJnk2bSlx8rQJDjunNW5ERG7ppuyp7eno6amGc10YVt3ckNwfsJTR_QJhvVozxyDhqi0nH8ePQ"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Kids T-Shirt</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>KD-012</span>
+<span>H&amp;M</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹499</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-emerald-600">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>In Stock (46)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-slate-100">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-slate-900"></span>
+</div>
+<div class="flex items-center gap-1 text-2xs text-slate-500">
+<span class="px-1 bg-slate-100 rounded">S</span>
+<span class="px-1 bg-slate-100 rounded">M</span>
+<span class="px-1 bg-slate-100 rounded">XL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 8: Men's Chino Pant -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Men's Chino Pant" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhGQNS-2o9AD2srKeKqFL6mxd0gR2zBWnI3c_zSvyw312m9tYtokTK2PdBLQbdELayj5VWQfhSW8KiinR6xmbZ0gaINCQ1ei2sB2GQt7X82lxT9yx7SBwEA5HrM7dh3qlsxKrRdQBdysodwMu3o4cTCxdPM6HTHqWOpl-Wip57NXNnAKll7xMFZpkf9YiXAIgx40stNm5558Q5fjx7djwjxuQf5xGS6_VXEuzRen2AhOhPJbQ1KT1T"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Men's Chino Pant</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>PT-001</span>
+<span>Allen Solly</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹1,199</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-emerald-600">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>In Stock (18)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-slate-100">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-stone-400"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-slate-800"></span>
+</div>
+<div class="flex items-center gap-1 text-2xs text-slate-500">
+<span class="px-1 bg-slate-100 rounded">M</span>
+<span class="px-1 bg-slate-100 rounded">L</span>
+<span class="px-1 bg-slate-100 rounded">XL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 9: Men's Hoodie -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Men's Hoodie" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfkEEASEx0RRvha0c7JAjs6chVSnHJkqshbamQFvMTq0u3nN79emkfy2yk0p6Blavc9zQHv19I5rt7SsLUHkI9hOzzmhHfNLJF7vXJP3L7H7RzszcKFNNCXyxcNK9K5jjmsqs8XeUX0_oM9I8pmcbbvc5jRfYEY65zBWuk9vwdVZTAZz4g6fN0aQQpMFGNmOunr3vDaRX-rxjql27Ecp5gFOse3IeRgrxfdirQjhMUHRYacrR7-J3q"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Men's Hoodie</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>HD-001</span>
+<span>H&amp;M</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹1,499</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-emerald-600">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>In Stock (16)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 10: Men's Jacket -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded text-2xs font-semibold bg-amber-50 text-amber-600 border border-amber-200">Offer</span>
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Men's Jacket" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPsKHU5aWRF0KcI0CkkcEy8XgdVC7jO3ANrDzAOtdCEc0yXDcj9Cr9Qzp-M4CXsNMuCFwvt11y7jFeDceOV5eSEAXq6jcpwnNvdmqQiVn_MCd4kjcgL-MOpcrveDByvoIlvE6ejUx_2m_zA81lMc_5yxILN1iHmSlMW3ukTKHHn1fvX9nTm0RtAIRUNueGcTJIrYuhLT6mPlia5kU9-_0W1qCLUXui_ikrtB9YDwj-7ZcWFTg4ni4I"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Men's Jacket</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>JK-001</span>
+<span>Levi's</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹2,499</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-amber-600">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+<span>Low Stock (3)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 11: Women's Jeans -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Women's Jeans" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ1kc3TZHv5sTGG_OE_xSott1YXUE14-HDqj-JkqtXalnPVWAzb7dY0ZoLQesGRGTRDKnzhAS9QiSYXM9nU9eqk2B5wva46pk-CXYGkyeb-ZBR06pEcCZEzoihedB4jyhlEbk-yALjyhgQ_xLbAkS0pgXbkAcTWjPoeepIENsLdcFcAmEOalqV3wFDS1iavxa9trC4-AH-TxCIOlXsAB7WadzRgCQuy4I9-YoK5Q03ekJbxYTkI_3g"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Women's Jeans</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>WJ-250</span>
+<span>Only</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹1,399</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-emerald-600">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>In Stock (26)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 12: Men's Blazer -->
+<div class="bg-white rounded-lg border border-borderSubtle p-2.5 flex flex-col justify-between relative card-hover">
+<div class="relative w-full aspect-square bg-slate-50 rounded-md overflow-hidden mb-2 flex items-center justify-center">
+<span class="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded text-2xs font-semibold bg-brand-50 text-brand-600 border border-brand-200">New</span>
+<button class="absolute top-1.5 right-1.5 z-10 p-1 text-slate-400 hover:text-rose-500 rounded-full bg-white/80 backdrop-blur-xs">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<img alt="Men's Blazer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQUVcQiv_0eoFndzMDEMn1CWHXNaqHOI8u-WW5qyQMz_NLt0Dr5Jzv8n9MDYKWa8hpQJazSwcI_IfSxLZtZDa2Rwpep_kwi02OxMOx1FLnxRe8FX1bgv5RlJQ3uiao_jYz54b0ksnMkD7epNR24Bw5WSTZJKkB96zpPhJyPtVEcqpVM9EN7Hj18sI0Tid8O86UFVSEM6qjqGtS3EuWDcjy9C4KDnM_6IK0qiuPHkNPfaE4ZA6GTBCG"/>
+</div>
+<div class="space-y-1">
+<div class="font-semibold text-xs text-slate-900 truncate">Men's Blazer</div>
+<div class="flex items-center justify-between text-2xs text-slate-500">
+<span>BL-001</span>
+<span>Arrow</span>
+</div>
+<div class="font-bold text-xs text-slate-900">₹3,499</div>
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center gap-1 text-2xs font-semibold text-emerald-600">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>In Stock (8)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- WORKSPACE COL 3: PERSISTENT DETAIL WORKSPACE (Right) -->
+<aside class="w-80 xl:w-88 bg-white border-l border-borderSubtle overflow-y-auto flex-shrink-0 flex flex-col p-4 space-y-4 select-none">
+<!-- Detail Header Actions -->
+<div class="flex items-center justify-end gap-1.5">
+<button class="flex items-center gap-1 px-2.5 py-1 text-2xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-md hover:bg-slate-50 shadow-2xs">
+<svg class="w-3 h-3 text-slate-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Edit</span>
+</button>
+<button class="p-1 text-slate-500 hover:text-slate-700 bg-white border border-slate-200 rounded-md">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<!-- Product Image Gallery Preview -->
+<div class="flex gap-2.5 items-start">
+<!-- 4 Thumbnail column -->
+<div class="flex flex-col gap-1.5 flex-shrink-0">
+<div class="w-9 h-9 rounded border-2 border-brand-600 overflow-hidden cursor-pointer">
+<img alt="Thumb 1" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFBRRgHDsZjN3mOa7jzKWpeu_mf6ogsTwh1dQ5DKLAzd0qcNsXVxoIMzNyCtshoMGsiYs7XkQ9Gv0yJm8IvjYBt2RaBtFAcu8t7kJ3hFlrv-RK-Bz1UZ1JbwNEVxDIXrOOFCNjxC8RMd9S4oPDU4b5V12BfPCjYCv1Pka0hl2F33FY8zAvOuARelT1UeRl61dL0KnPuvDvTUhvgbfiB90VadpxUIlAxNJtrNXsNFjjR8AFWMt45w1F"/>
+</div>
+<div class="w-9 h-9 rounded border border-slate-200 overflow-hidden cursor-pointer hover:border-slate-300">
+<img alt="Thumb 2" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6eVGOkan_s9kPPVPADXkdIxF0BSeRPjimrWbyIYLbBzliDAV8ZYinW3qJvjfbXLr4kb2uFuGgyiQeTD41l5uvG2j66e1sbM0Oi-hsnhaGDa8SRjisF37gOym7U4Nj65yrSnMi0D37RKCPp4BsS_vM9vpcps96AdjHMJJJ2lIAEZzAnEgLc6N-0nU_G5Cx8CVq43gnNFI5rC13Sn0vBQ8vVyHpZvAYYEvo2uhBoRAjpdaOnnoL6CDx"/>
+</div>
+<div class="w-9 h-9 rounded border border-slate-200 overflow-hidden cursor-pointer hover:border-slate-300">
+<img alt="Thumb 3" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ8iujZb92Vokl1mPmb6CF2bpd4iPuGnAWB_hucSkBaC3rmTwpkyq-rD7F_3rk5YUjZhF8wZW18-FdW9nVrjuQcFSIFdESj1Ma2D9aKg2ZoNaWYdh66HZVEHcVMKksSTeJoFq9D-SI_2oOloseXWHjhsLpV36TxiVNIpHKQNHXhBsFZi0CdZBDORfvXqVKV6KolFinrf8IGqTD4hp1xDvv_sy8EBVzbnke-ybxzTihkZJn6NvI4a4F"/>
+</div>
+<div class="w-9 h-9 rounded border border-slate-200 overflow-hidden cursor-pointer hover:border-slate-300">
+<img alt="Thumb 4" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATo97YoGBdOkNu0TFE3QUmoaSu40A3oRtxYaR8IbzO74Z158TCPXm6x9JcodagJlOBxkJTzN-tRUQ41nwclCDJsmL34gvCzJAZVo2sYNr67_kxFLqKwGS6OUoDkxxCbAMf2zQpk2BJj6ASnxrhPgAqsWp5PUgqYwcdsiEsyXskMuy_JU8RURGdaHNkwFgGA7VLvvcoy2wOSJoe4hMeuiGw_DaXrX-nT-i2OvFLEzXMxBhDVjMC-Esb"/>
+</div>
+</div>
+<!-- Large Image Preview -->
+<div class="flex-1 aspect-[4/4] bg-slate-50 border border-slate-200 rounded-lg overflow-hidden flex items-center justify-center">
+<img alt="Men's Casual Shirt Full View" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7QarJZ5KsfUSBQ-MckySPE6DLaLSLu6WVO8WQcMiR2CMbxonHeix2cj8ZUrFZqQhjC7OqI6W1lonGmQa5GBzRcXgjMgdjm1n3IvLS-oWhs_rnkp5-BCuh3kJhlHyeLhcfu2ektqvRwAcx74qjz3XX6ZXU4qYYpGwco7pXKs5_fUY-25lWyLBKX5Qe4Hxek7Bss031u7D_nhOLoM52Ky2cCUQ7MZazd_NNd0ocybLmcK525xzIKVEd"/>
+</div>
+</div>
+<!-- Product Details & Status -->
+<div class="space-y-1 pt-1">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-bold text-slate-900 tracking-tight">Men's Casual Shirt</h3>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-2xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Active
+              </span>
+</div>
+<div class="text-2xs text-slate-500 font-medium">SH-001 | Allen Solly</div>
+<!-- Breadcrumbs in detail view -->
+<div class="flex items-center gap-1 text-2xs text-slate-400 pt-0.5">
+<span class="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Men's Wear</span>
+<span>&gt;</span>
+<span class="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Shirts</span>
+<span>&gt;</span>
+<span class="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Casual Shirts</span>
+</div>
+<p class="text-2xs text-slate-500 pt-1 leading-relaxed">
+              Premium cotton casual shirt with comfortable fit. Perfect for everyday wear.
+            </p>
+</div>
+<!-- Price Row -->
+<div class="flex items-baseline gap-2 pt-1 border-t border-slate-100">
+<span class="text-lg font-bold text-slate-900">₹799</span>
+<span class="text-2xs text-slate-400 line-through">MRP: ₹1,299</span>
+<span class="px-1.5 py-0.2 rounded text-2xs font-bold bg-emerald-50 text-emerald-600 border border-emerald-200">38% OFF</span>
+</div>
+<!-- Variants Configuration -->
+<div class="space-y-2 pt-2 border-t border-slate-100">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-slate-800">Variants (12)</span>
+<button class="text-brand-600 text-2xs font-semibold hover:underline">View All</button>
+</div>
+<!-- Color Variant -->
+<div class="space-y-1">
+<div class="text-2xs font-medium text-slate-600">Color: <span class="font-semibold text-slate-900">Blue</span></div>
+<div class="flex items-center gap-1.5">
+<button class="w-4 h-4 rounded-full bg-blue-600 ring-2 ring-brand-500 ring-offset-1"></button>
+<button class="w-4 h-4 rounded-full bg-slate-900 hover:scale-110 transition-transform"></button>
+<button class="w-4 h-4 rounded-full bg-sky-200 hover:scale-110 transition-transform"></button>
+<button class="w-4 h-4 rounded-full bg-slate-500 hover:scale-110 transition-transform"></button>
+<button class="w-4 h-4 rounded-full bg-red-900 hover:scale-110 transition-transform"></button>
+</div>
+</div>
+<!-- Size Variant -->
+<div class="space-y-1 pt-1">
+<div class="text-2xs font-medium text-slate-600">Size:</div>
+<div class="flex items-center gap-1.5">
+<button class="w-6 h-6 rounded border border-slate-200 bg-white hover:bg-slate-50 text-2xs font-medium text-slate-700 flex items-center justify-center">S</button>
+<button class="w-6 h-6 rounded bg-brand-600 text-white text-2xs font-semibold flex items-center justify-center shadow-xs">M</button>
+<button class="w-6 h-6 rounded border border-slate-200 bg-white hover:bg-slate-50 text-2xs font-medium text-slate-700 flex items-center justify-center">L</button>
+<button class="w-6 h-6 rounded border border-slate-200 bg-white hover:bg-slate-50 text-2xs font-medium text-slate-700 flex items-center justify-center">XL</button>
+<button class="w-7 h-6 rounded border border-slate-200 bg-white hover:bg-slate-50 text-2xs font-medium text-slate-700 flex items-center justify-center">XXL</button>
+</div>
+</div>
+</div>
+<!-- Product Tabs -->
+<div class="pt-2">
+<div class="flex border-b border-slate-200 text-2xs font-semibold">
+<button class="py-1.5 px-2 text-brand-600 border-b-2 border-brand-600 font-bold">Stock</button>
+<button class="py-1.5 px-2 text-slate-500 hover:text-slate-700">Pricing</button>
+<button class="py-1.5 px-2 text-slate-500 hover:text-slate-700">Details</button>
+<button class="py-1.5 px-2 text-slate-500 hover:text-slate-700">Images</button>
+<button class="py-1.5 px-2 text-slate-500 hover:text-slate-700">Sales</button>
+</div>
+<!-- Tab Content: Stock Overview -->
+<div class="pt-2.5 space-y-1.5">
+<div class="flex items-center justify-between text-2xs font-semibold text-slate-800 pb-1 border-b border-slate-100">
+<span>Current Stock (All Stores)</span>
+<span class="text-xs font-bold text-slate-900">186</span>
+</div>
+<div class="flex items-center justify-between text-2xs text-slate-600 py-0.5">
+<span>Indiranagar Store</span>
+<span class="font-medium text-slate-800">62</span>
+</div>
+<div class="flex items-center justify-between text-2xs text-slate-600 py-0.5">
+<span>Koramangala Store</span>
+<span class="font-medium text-slate-800">48</span>
+</div>
+<div class="flex items-center justify-between text-2xs text-slate-600 py-0.5">
+<span>HSR Layout Store</span>
+<span class="font-medium text-slate-800">36</span>
+</div>
+<div class="flex items-center justify-between text-2xs text-slate-600 py-0.5">
+<span>Warehouse (Main)</span>
+<span class="font-medium text-slate-800">40</span>
+</div>
+<!-- View details CTA link -->
+<button class="w-full mt-2 py-1.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded text-brand-600 font-semibold text-2xs text-center transition-colors">
+                View Stock Details
+              </button>
+</div>
+</div>
+<!-- Quick Actions Panel -->
+<div class="pt-2 border-t border-slate-100 space-y-2 mt-auto">
+<span class="text-xs font-bold text-slate-900 block">Quick Actions</span>
+<div class="grid grid-cols-3 gap-1.5">
+<button class="flex items-center justify-center gap-1 py-1.5 px-1 bg-white border border-slate-200 hover:bg-slate-50 rounded text-2xs text-slate-700 font-medium">
+<svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="truncate">Update Stock</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-1.5 px-1 bg-white border border-slate-200 hover:bg-slate-50 rounded text-2xs text-slate-700 font-medium">
+<svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="truncate">Create Variant</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-1.5 px-1 bg-white border border-slate-200 hover:bg-slate-50 rounded text-2xs text-slate-700 font-medium">
+<svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="truncate">Duplicate</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-1.5 px-1 bg-white border border-slate-200 hover:bg-slate-50 rounded text-2xs text-slate-700 font-medium">
+<svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="truncate">Add to Offer</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-1.5 px-1 bg-white border border-slate-200 hover:bg-slate-50 rounded text-2xs text-slate-700 font-medium">
+<svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="truncate">View ERPNext</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-1.5 px-1 bg-white border border-slate-200 hover:bg-slate-50 rounded text-2xs text-slate-700 font-medium">
+<span>More</span>
+<svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</aside>
+</div>
+<!-- END: ThreeColumnWorkspace -->
+</div>
+<!-- END: MainContentContainer -->
+</div>
+</body></html>
