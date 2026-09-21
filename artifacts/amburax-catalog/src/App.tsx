@@ -4,6 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
+import InventoryPage from '@/pages/inventory';
 import { products, type StockStatus } from '@/data/products';
 import {
   CatalogToolbar,
@@ -129,6 +130,7 @@ function Router() {
     <RoutedErrorBoundary>
       <Switch>
         <Route path="/" component={CatalogPage} />
+          <Route path="/inventory" component={InventoryPage} />
         <Route path="/products" component={CatalogPage} />
         <Route component={NotFound} />
       </Switch>
